@@ -10,7 +10,6 @@ export function SortBy() {
       {label: 'Featured 3', value: 'dev_hook_side_project'}
     ]
   })
-  console.log(options)
 
   return (
     <select className='w-1/2 py-2 px-1 border rounded lg:w-3/12 flex-1 lg:flex-none lg:order-2' onChange={(e) => refine(e.currentTarget.value)} value={currentRefinement}>

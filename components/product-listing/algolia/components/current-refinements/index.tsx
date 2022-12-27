@@ -1,6 +1,16 @@
+'use client'
+import { useCurrentRefinements } from "react-instantsearch-hooks-web"
 const TEMPREFINEMENTS = ['mens', 'sweaters', 'red']
 
+// const transformItems = () => {
+//   re
+// }
+
 export function CurrentRefinements() {
+  const { items, canRefine, refine } = useCurrentRefinements()
+
+  console.log({items})
+
   return (
     <details className='border-b-2 border-gray-100 py-2 text-sm text-center lg:text-base'>
       <summary>Current Refinement</summary>
