@@ -18,6 +18,7 @@ export function ProductHit({product, index} : Props) {
         height='564' 
         fetchpriority={index <= 4 ? 'high' : 'low'}
         loading={index <= 4 ? 'eager' : 'lazy'}
+        className='bg-gray-200'
       />
       <div className='mt-4'>
         <p className='text-xs text-indigo-500'>{brand as string}</p>

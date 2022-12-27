@@ -1,4 +1,5 @@
 import { BasicRefinement } from './basic-refinement'
+import { ColourRefinement } from './colour-refinement'
 
 export function FiltersList() {
 

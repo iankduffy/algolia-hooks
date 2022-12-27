@@ -1,13 +1,19 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import { CategoriesLinks } from 'components/homepage/categories'
+import { Hero } from 'components/homepage/hero'
 
 export default function Home() {
   return (
     <main>
-      Basic Home Page with links to categories
+      <Hero />
+      {/* More Categories to try */}
+      <CategoriesLinks />
+      {/* See how the project is made */}
+      {/* NextJs 13 App Folder and Typescript */}
+      {/* Tailwind CSS */}
+      {/* Algolia Search Hooks */}
+      {/* Loading State if possible */}
+      {/* Supabase for page routes? */}
+      {/* Performance Stuff */}
     </main>
   )
 }

@@ -7,7 +7,8 @@ interface Props {
   title: string
 }
 
-export function BasicRefinement(props: Props): JSX.Element | null {
+// Todo: Colour refinement
+export function ColourRefinement(props: Props): JSX.Element | null {
   const { items, refine } = useRefinementList(props)
 
   if (!items.length) {
@@ -17,18 +18,24 @@ export function BasicRefinement(props: Props): JSX.Element | null {
   return (
     <div className='px-4 py-2 mb-4 border'>
       <h4 className='text-lg font-medium'>{props.title}</h4>
-      <ul>
+      <ul className="grid grid-cols-4 mt-2">
         {items.map((item) => (
           <li key={item.value}>
-            <label className='flex gap-1'>
+            <label className='flex flex-col justify-center gap-1 text-center'>
+              <span className="w-8 h-8 mx-auto bg-sky-700">
+
+              </span>
               <input
                 type='checkbox'
                 value={item.value}
                 checked={item.isRefined}
                 onChange={() => refine(item.value)}
+                className='hidden'
               />
-              <span className='capitalize'>{item.label}</span>
-              <span>({item.count})</span>
+              <p>
+                <span className='capitalize'>{item.label} </span>
+                <span>({item.count})</span>
+              </p>
             </label>
           </li>
         ))}

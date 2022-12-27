@@ -11,17 +11,17 @@ export function AlgoliaPage() {
     <div className='container px-4 py-6 mx-auto'>
       <Breadcrumbs attributes={[]} />
       <div className='flex w-full gap-5'>
-        <aside className='hidden lg:block w-3/12 my-4'>
-          <div className='border p-4 text-center mb-2'>
+        <aside className='hidden w-3/12 my-4 lg:block'>
+          <div className='p-4 mb-4 text-center border'>
             <ProductCount />
             <p className='text-sm'>Filter Your Results</p>
           </div>
           <FiltersList />
         </aside>
         <div className='w-full lg:w-9/12'>
-          <h2 className='my-4 lg:mb-2 text-lg font-bold lg:text-2xl'>Category Title</h2>
+          <h2 className='my-4 text-lg font-bold lg:mb-2 lg:text-2xl'>Category Title</h2>
           <p>Cupidatat commodo dolor do culpa velit consequat incididunt. Magna nostrud id fugiat cillum. Tempor tempor laboris non fugiat dolor proident esse ullamco incididunt nulla aliqua aliquip adipisicing. In cillum consectetur mollit non velit sunt Lorem amet velit ut pariatur quis.</p>
-          <div className='flex gap-4 mt-4 lg:justify-between flex-wrap border-b-2 border-gray-100 items-center pb-4'>
+          <div className='flex flex-wrap items-center gap-4 pb-4 mt-4 border-b-2 border-gray-100 lg:justify-between'>
             <FiltersButton />
             <SortBy />
             <ProductCount />
