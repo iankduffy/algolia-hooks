@@ -21,11 +21,11 @@ Not yet deployed.
 
 ## Todo: 
 
--[] Create more products with data
--[] Set up current refinements component
--[] Set up pagination components 
--[] Set up database to include slug|category title| description|query
--[] Set up breadcrumbs
--[] Algolia Sort indexs 
--[] Open mobile filters
--[] Homepage - with brief explantion of the project and links to categories
+- [] Create more products with data
+- [] Set up current refinements component
+- [] Set up pagination components 
+- [] Set up database to include slug|category title| description|query
+- [] Set up breadcrumbs
+- [] Algolia Sort indexs 
+- [] Open mobile filters
+- [] Homepage - with brief explantion of the project and links to categories
