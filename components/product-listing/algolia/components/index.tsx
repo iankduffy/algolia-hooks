@@ -4,20 +4,19 @@ import { SortBy } from './sort-by'
 import { FiltersButton } from './filters-button'
 import { CurrentRefinements } from './current-refinements'
 import { ProductHits } from './product-hits'
+import { FiltersList } from './refinement-list'
 
 export function AlgoliaPage() {
   return (
     <div className='container px-4 py-6 mx-auto'>
-      <Breadcrumbs />
+      <Breadcrumbs attributes={[]} />
       <div className='flex w-full gap-5'>
         <aside className='hidden lg:block w-3/12 my-4'>
           <div className='border p-4 text-center mb-2'>
             <ProductCount />
             <p className='text-sm'>Filter Your Results</p>
           </div>
-          <div>
-            Filters
-          </div>
+          <FiltersList />
         </aside>
         <div className='w-full lg:w-9/12'>
           <h2 className='my-4 lg:mb-2 text-lg font-bold lg:text-2xl'>Category Title</h2>
