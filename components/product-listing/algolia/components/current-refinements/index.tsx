@@ -1,24 +1,49 @@
 'use client'
-import { useCurrentRefinements } from "react-instantsearch-hooks-web"
-const TEMPREFINEMENTS = ['mens', 'sweaters', 'red']
+import { UseCurrentRefinementsProps, useCurrentRefinements } from "react-instantsearch-hooks-web"
 
-// const transformItems = () => {
-//   re
-// }
+interface CurrentRefinements {
+  indexName: string
+  attribute: string
+  label: string
+  refinements: CurrentRefinementsValue[]
+  refine(refinement: CurrentRefinementsValue): void
+}
 
-export function CurrentRefinements() {
-  const { items, canRefine, refine } = useCurrentRefinements()
+interface CurrentRefinementsValue {
+  attribute: string
+  type: string
+  value: string | number
+  label: string
+  operator?: string
+  count?: number
+  exhaustive?: boolean
+}
 
-  console.log({items})
+
+const transformItems = (items: CurrentRefinements[]): CurrentRefinementsValue[] => {
+  const transformedItems = items.reduce(
+  (memo, value) => [...memo, ...value.refinements], 
+    [] as CurrentRefinementsValue[]
+  )
+
+  return transformedItems
+}
+
+export function CurrentRefinements(): JSX.Element | null {
+  const { items, canRefine, refine } = useCurrentRefinements({
+    transformItems
+  })
+
+  if (!canRefine) return null
 
   return (
     <details className='border-b-2 border-gray-100 py-2 text-sm text-center lg:text-base'>
       <summary>Current Refinement</summary>
       <div className='flex gap-2 my-2 justify-center lg:my-4'>
-        {TEMPREFINEMENTS.map((item, key) => {
+        {items.map((item, key) => {
           return (
-            <div key={key} className='pl-2 border rounded-full flex items-center overflow-hidden gap-2'>
-              {item} <button className='py-1 px-2 bg-slate-50'>X</button>
+            <div key={key} className='pl-2 border rounded-full flex items-center overflow-hidden gap-2 capitalize'>
+              {item.label} <button className='py-1 px-2 bg-slate-50' onClick={() => refine(item)}>X</button>
             </div>
           )
         })}
