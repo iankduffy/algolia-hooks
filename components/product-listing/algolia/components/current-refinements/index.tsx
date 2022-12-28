@@ -1,5 +1,5 @@
 'use client'
-import { UseCurrentRefinementsProps, useCurrentRefinements } from "react-instantsearch-hooks-web"
+import { useCurrentRefinements } from "react-instantsearch-hooks-web"
 
 interface CurrentRefinements {
   indexName: string
@@ -29,8 +29,9 @@ const transformItems = (items: CurrentRefinements[]): CurrentRefinementsValue[] 
   return transformedItems
 }
 
+// Todo: Fix Typescript Error
 export function CurrentRefinements(): JSX.Element | null {
-  const { items, canRefine, refine } = useCurrentRefinements({
+  const { items, canRefine, refine } = useCurrentRefinements<unknown>({
     transformItems
   })
 
