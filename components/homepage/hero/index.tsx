@@ -18,6 +18,9 @@ export function Hero(): JSX.Element {
           Github Repo
         </Link>
       </div>
+      <Link href='#how-it-done' className='block px-4 py-2 mb-6'>
+        Scroll Down To See How It Built
+      </Link>
       <Image src={"/temp-screenshot.png"} alt={"Image of the Algolia Page"} width='2632' height='1594' className='w-11/12 px-4 mx-auto border-2 rounded-lg lg:w-8/12' loading="eager" />
     </section>
   )
