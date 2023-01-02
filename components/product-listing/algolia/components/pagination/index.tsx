@@ -13,14 +13,54 @@ export function Pagination(): JSX.Element | null {
     canRefine,
     refine,
     createURL,
-  } = usePagination()
+  } = usePagination({
+    padding: 2,
+  })
+
+  console.log(pages)
 
   // When it the only page hide
-  if (isFirstPage && isLastPage) return null
+  if (!canRefine) return null
 
   return (
     <>
-      Pagniation
+    <ul>
+      <li>
+        <a
+          href="#"
+          onClick={(event) => {
+            event.preventDefault()
+            refine(0)
+          }}
+        >
+          1
+        </a>
+      </li>
+      {pages.map((page) => (
+        <li key={page}>
+          <a
+            href="#"
+            onClick={(event) => {
+              event.preventDefault();
+              refine(page);
+            }}
+          >
+            {page + 1}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a
+          href="#"
+          onClick={(event) => {
+            event.preventDefault()
+            refine(nbPages - 1)
+          }}
+        >
+          {nbPages}
+        </a>
+      </li>
+    </ul>
     </>
   )
 }

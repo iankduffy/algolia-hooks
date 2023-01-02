@@ -34,7 +34,6 @@ const categories = ["Mens", "Womens", "Tools", "Sports", "Home", "Health", "Comp
 const sizes = ["Extra Small", "Small", "Medium", "Large", "Extra Large", "One Size"]
 const colours = ["violet", "pink", "white", "blue", "turquoise", "tan", "gold", "olive", "red", "green", "plum", "indigo", "sky", "yellow", "black", "cyan"]
 
-
 export const buildProductData = (number: number) => {
   const productArray : ProductData[] = []
 
@@ -47,7 +46,7 @@ export const buildProductData = (number: number) => {
       "colour": faker.helpers.arrayElements(colours), 
       "price": Number(faker.commerce.price(0, 200)),
       "available_sizes": faker.helpers.arrayElements(sizes),
-      "product_thumbnail": `https://source.unsplash.com/random/564x564/?${faker.commerce.product()}`
+      "product_thumbnail": `https://source.unsplash.com/random/564x564/?${faker.commerce.productName()}`
     }
 
     productArray.push(product)

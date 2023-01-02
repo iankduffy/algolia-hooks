@@ -1,7 +1,12 @@
 'use client'
-
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch } from 'react-instantsearch-hooks-web';
+import { InstantSearch } from 'react-instantsearch-hooks-web'
+// import {
+//   InstantSearchServerState,
+//   InstantSearchSSRProvider,
+// } from 'react-instantsearch-hooks-web';
+import { Configure } from 'react-instantsearch-hooks-web'
+
 
 interface Props {
   children: React.ReactNode
@@ -11,7 +16,8 @@ const searchClient = algoliasearch(process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_ID as 
 
 export function AlgoliaProvider({children}: Props) {
   return (
-    <InstantSearch searchClient={searchClient} indexName="dev_hook_side_project">
+    <InstantSearch searchClient={searchClient} indexName="dev_hook_side_project" routing={true}>
+      <Configure hitsPerPage={1}/>
       {children}
     </InstantSearch>
   )
