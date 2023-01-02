@@ -1,5 +1,5 @@
 'use client'
-import { useCurrentRefinements } from "react-instantsearch-hooks-web"
+import { useCurrentRefinements, UseCurrentRefinementsProps } from "react-instantsearch-hooks-web"
 
 interface CurrentRefinements {
   indexName: string
@@ -19,32 +19,28 @@ interface CurrentRefinementsValue {
   exhaustive?: boolean
 }
 
-
-const transformItems = (items: CurrentRefinements[]): CurrentRefinementsValue[] => {
-  const transformedItems = items.reduce(
-  (memo, value) => [...memo, ...value.refinements], 
-    [] as CurrentRefinementsValue[]
-  )
-
-  return transformedItems
-}
-
-// Todo: Fix Typescript Error
+// Todo: Redesign how this works
 export function CurrentRefinements(): JSX.Element | null {
-  const { items, canRefine, refine } = useCurrentRefinements<unknown>({
-    transformItems
-  })
+  const { items, canRefine, refine } = useCurrentRefinements()
+
+  // Algolia transform items expects similar type back, 
+  // This allows me to get each refine as seperate child
+  const flattenedRefinements = items.reduce(
+    (memo, value) => [...memo, ...value.refinements], 
+      [] as CurrentRefinementsValue[]
+    )
 
   if (!canRefine) return null
 
   return (
-    <details className='border-b-2 border-gray-100 py-2 text-sm text-center lg:text-base'>
+    <details className='py-2 text-sm text-center border-b-2 border-gray-100 lg:text-base'>
       <summary>Current Refinement</summary>
-      <div className='flex gap-2 my-2 justify-center lg:my-4'>
-        {items.map((item, key) => {
+      <div className='flex justify-center gap-2 my-2 lg:my-4'>
+        {flattenedRefinements.map((item, key) => {
+          console.log(item)
           return (
-            <div key={key} className='pl-2 border rounded-full flex items-center overflow-hidden gap-2 capitalize'>
-              {item.label} <button className='py-1 px-2 bg-slate-50' onClick={() => refine(item)}>X</button>
+            <div key={key} className='flex items-center gap-2 pl-2 overflow-hidden capitalize border rounded-full'>
+              {item.label} <button className='px-2 py-1 bg-slate-50' onClick={() => refine(item)}>X</button>
             </div>
           )
         })}
