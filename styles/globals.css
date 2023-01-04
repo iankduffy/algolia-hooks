@@ -112,3 +112,10 @@ a {
   }
 } */
 
+.algolia-skeleton {
+  display: none;
+}
+
+.algolia-element:empty + .algolia-skeleton {
+  display: block;
+}
