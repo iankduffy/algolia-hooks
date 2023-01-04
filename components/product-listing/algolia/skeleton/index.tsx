@@ -1,3 +1,4 @@
+import { ProductHits } from "./product-hits";
 
 export function Skeleton({ }) {
   return (
@@ -18,6 +19,7 @@ export function Skeleton({ }) {
                 Pagination Here
               </div>
             </div>
+            <ProductHits />
           </div>
         </div>
       </div>

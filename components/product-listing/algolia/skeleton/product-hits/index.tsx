@@ -1,13 +1,10 @@
-'use client'
-import { BaseHit } from "instantsearch.js";
 import { ProductHit } from "./hit";
-import { UseHitsProps, useHits } from 'react-instantsearch-hooks-web';
 
-export function ProductHits(props: UseHitsProps<BaseHit> | undefined) {
-  const { hits } = useHits(props)
+export function ProductHits() : JSX.Element {
+  const hits = [...Array(32).keys()]
   return (
     <section className='grid grid-cols-2 gap-4 my-6 md:grid-cols-3 lg:grid-cols-4'>
-      {hits.map((product, index) => <ProductHit product={product} index={index} key={product.objectID} />)}
+      {hits.map((product, key={}) => <ProductHit key={key} />)}
     </section>
   )
 }
